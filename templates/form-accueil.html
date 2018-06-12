@@ -1,0 +1,28 @@
+{% if utilisateur %}
+  {% extends 'layout2.html' %}
+{% else %}
+  {% extends 'layout1.html' %}
+{% endif %}
+
+{% block content %}
+
+{% if articles %}
+{% for article in articles %}
+
+<div class="panel panel-default">
+   <h3>{{article.titre}}</h3>
+
+   <p class="lead">{{article.paragraphe}} </p>
+   <p class="text-info">  *---------*--------*  Identifiant : {{article.identifiant}} *-----*------*  Auteur : {{article.auteur}}*--------*-------* Publié le :{{article.date_publication}}
+   </p>
+</div>
+{% endfor %}
+
+{% else %}
+
+<div class="panel panel-default">
+	<div class="panel-footer"><h1>Aucun article trouvé</h1></div>
+</div>
+
+{% endif %}
+{% endblock %}

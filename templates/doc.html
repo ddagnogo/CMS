@@ -1,0 +1,102 @@
+{% if utilisateur %}
+{% extends 'layout2.html' %}
+{% else %}
+{% extends 'layout1.html' %}
+{% endif%}
+
+{% block content %}
+
+<div>
+  <ul class="breadcrumb">
+    <li class="active">Documentation API</li>
+  </ul>
+
+  <ul class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">api</a></li>
+    <li class="active">article&lt;identifiant&gt;</li>
+    <li class="active"><span class="label label-success">GET</span></li>
+    <p></p>
+  </ul>
+  <span class="label label-success">GET</span><br>
+  <br>
+  <div>
+     <p>
+	  Retourne en format json, les données d'un article dont l'identifiant est spécifié par le paramétre identifiant. 
+     </p>
+     <p>
+          Codes de status http possibles
+     </p>
+     <p>
+     <ul>
+	<li><span class="badge">200</span></li><span>L'article reféré par
+	identifiant a été trouvé</span>
+     </ul>
+     </p>
+      <p>
+     <ul>
+	<li><span class="badge">404</span></li><span>L'article spécifié par
+	identifiant n'a pas été trouvé</span>
+     </ul>
+     </p>
+
+  </div>
+  <br>
+  <p></p><br>
+  <ul class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">api</a></li>
+    <li class="active">articles</li>
+    <li class="active"><span class="label label-success">GET</span>
+        <span class="label label-warning">POST</span>
+    </li>
+
+  </ul>
+    <p></p>
+    <span class="label label-success">GET</span><br>
+    <br>
+  <br>
+  <div>
+     <p>
+	  Retourne en format json, des données de tous les articles déjà publiés. C'est à dire les articles dont la date de publication est inférieur à la date courante.
+     </p>
+     <p>
+          Codes de status http possibles
+     </p>
+     <p>
+     <ul>
+	<li><span class="badge">200</span></li><span>Succès. L'opération s'est 
+	   déroulée correctement</span>
+     </ul>
+     </p>
+
+  </div>
+
+
+  <span class="label label-warning">POST</span><br>
+    
+  <div id="doc-articles"><br>
+    
+     <p>
+     Crée un article, à partir de données reçues en format json
+     </p>
+     <p>
+          Codes de status http possibles
+     </p>
+     <p>
+     <ul>
+	<li><span class="badge">200</span></li><span>L'article a été créé</span>
+     </ul>
+     </p>
+      <p>
+     <ul>
+	     <li><span class="badge">400</span></li><span>Mauvaise requete dû soit à un champ manquant soit à un identifiant déjà existant</span>
+     </ul>
+     </p>
+    
+    
+    </div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'layout2.html' %}
+{% block content %}
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+            {% for article in articles %}
+
+	    <form class="form-horizontal" action="/article/update" method="POST">
+                  <fieldset>
+                    <legend>Modification de l'article</legend>
+                    <div class="form-group">
+
+
+		    <label for="inputTitre" class="control-label">Titre</label>
+
+		    {% if modif and taille and taille[0] > 0 %}
+		        <input type="text" class="form-control" id="inputTitre" 
+			  value="{{modif.titre}}" name="titre" >
+                    {% elif  modif and taille and taille[0] == 0 %}
+                        <div class="text-warning">Le champ titre est requis</div>
+		    {% else %}
+		        <input type="text" class="form-control" id="inputTitre" 
+			  value="{{article.titre}}" name="titre" >
+
+		    {% endif %}
+
+                      <br>
+                        <div class="text-warning"></div>
+
+                      <label class="control-label" for="inputIdentifiant" >Identifiant</label>
+                      <br>
+		        <input type="text" class="form-control" value="{{article.identifiant}}"
+			   name="identifiant" id="inputIdentifiant" disabled>
+                      <br>
+                      <label class="control-label" for="inputAuteur">Auteur</label>
+		        <input type="text" class="form-control" value="{{article.auteur}}" 
+			   name="auteur" disabled>
+		      <br>
+                      <div>
+			<input type="text" value="{{article.date_publication}}" 
+			   name="date_publication" size="12" disabled>
+                        <br>
+                      </div>
+                       <br>
+                      <label class="col-lg-2 control-label" for="textParagraphe">Paragraphe</label>
+                      <div class="col-lg-10">
+
+                      {% if modif and taille and taille[1] > 0 %}
+                        <textarea class="form-control" rows="10" 
+			   name="paragraphe">{{modif.paragraphe}}</textarea>
+		      {% elif modif and taille and taille == 0 %}
+
+                        <div class="text-warning">Le champ paragraphe est requis</div>
+
+		      {% else %} 
+                        <textarea class="form-control" rows="10" 
+			   name="paragraphe">{{article.paragraphe}}</textarea>
+			{% endif %}
+
+                        <br>
+			
+
+                      </div>
+                      <br>
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Annuler</button>
+                        <span></span>
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                        <br>
+                      </div>
+                      <br>
+                    </div>
+                  </fieldset>
+	  {% endfor %}
+
+
+                </form>
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
+

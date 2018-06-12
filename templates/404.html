@@ -1,0 +1,13 @@
+{% if utilisateur %}
+  {% extends 'layout2.html' %}
+{% else %}
+  {% extends 'layout1.html' %}
+{% endif %}
+{% block content %}
+
+  <div class="text-danger"">
+      <h3>404  L'article demandé est introuvable</h3>
+  </div>
+
+{% endblock %}
+

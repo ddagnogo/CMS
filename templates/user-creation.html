@@ -1,0 +1,43 @@
+{% extends 'layout1.html' %}
+{% endif %}
+{% block content %}
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+                <form class="form-horizontal" action="/admin-nouveau/article" method="POST">
+                  <fieldset>
+                    <legend>Authenfication</legend>
+                    <div class="form-group">
+                      <label for="inputUser" class="control-label">Nom utilisateur</label>
+		      <input type="text" class="form-control" name="username" id="inputUser" >
+                      <br>
+		  
+                      <label class="control-label" for="inputPassword" >Mot de passe</label>
+                      <br>
+		      <input type="text" class="form-control"  name="password" id="inputPassword">
+                      <br>
+		      
+                      <label class="control-label" for="inputEmail" >Email : Entrer un mail vailde</label>
+
+		      <input type="text" class="form-control"  name="email" id="inputEmail">
+		      <br>
+
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Annuler</button>
+                        <span></span>
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                        <br>
+                      </div>
+                      <br>
+                    </div>
+                  </fieldset>
+                </form>
+
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}
+

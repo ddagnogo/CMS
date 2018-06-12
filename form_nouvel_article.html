@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+  <form>
+    <fieldset>
+      <legend>References de l'article</legend>
+        <p> Titre 
+       	  <label for="titre">Titre</label>
+       	  <input type="text" id="titre" name="titre" size="50">
+        </p>
+        <div id="err-titre"></div>
+        <p>Identifiant
+	  <label for="identifiant">Identifiant</label>
+	  <input type="text" id="identifiant" name="identifiant" size="50">
+        </p>
+        <div id="err-identifiant"></div>
+        <p> Auteur
+	  <label for="auteur">Auteur</label>
+	  <input type="text" id="auteur" name="auteur" size="50">
+        </p>
+        <div id="err-auteur"></div>
+        <p>
+	  <label for="jour">Date publication</label>
+	    <select id="jour" name="jour">
+	      <option value="01">01</option>
+	      <option value="02">02</option>
+	      <option value="03">03</option>
+	      <option value="04">04</option>
+	      <option value="05">05</option>
+	      <option value="06">06</option>
+	      <option value="07">07</option>
+	      <option value="08">08</option>
+	      <option value="09">09</option>
+	      <option value="10">10</option>
+	      <option value="11">11</option>
+	      <option value="12">12</option>
+	      <option value="13">13</option>
+	      <option value="14">14</option>
+	      <option value="15">15</option>
+	      <option value="16">16</option>
+	      <option value="17">17</option>
+	      <option value="18">18</option>
+	      <option value="19">19</option>
+	      <option value="20">20</option>
+	      <option value="21">21</option>
+	      <option value="22">22</option>
+	      <option value="23">23</option>
+	      <option value="24">24</option>
+	      <option value="25">25</option>
+	      <option value="26">26</option>
+	      <option value="27">27</option>
+	      <option value="28">28</option>
+	      <option value="29">29</option>
+	      <option value="30">30</option>
+	      <option value="31">31</option>
+	    </select>
+	    <select name="mois">
+	      <option value="01">Janvier</option>
+	      <option value="02">Février</option>
+	      <option value="03">Mars</option>
+	      <option value="04">Avril</option>
+	      <option value="05">Mai</option>
+	      <option value="06">Juin</option>
+	      <option value="07">Juillet</option>
+	      <option value="08">Aout</option>
+	      <option value="09">Septembre</option>
+	      <option value="10">Octobre</option>
+	      <option value="11">Novembre</option>
+	      <option value="12">Décembre</option>
+            </select>
+          <input type="text" name="annee" size="10">
+        </p>
+        <div id="err-date"></div>
+    </fieldset>
+    <fieldset>
+      <legend>Contenu de l'article</legend>
+        <p>
+	  <textarea id="paragraphe"rows="17" cols="100"></textarea>
+	</p>
+          <div id="err-paragraphe"></div>
+          <div>
+	    <input type="reset" value="Annuler">
+	    <input type="submit" value="Envoyer">
+	  </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}

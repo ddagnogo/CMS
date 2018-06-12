@@ -1,0 +1,21 @@
+{% if utilisateur %}
+  {% extends 'layout2.html' %}
+{% else %}
+  {% extends 'layout1.html' %}
+{% endif %}
+{% block content %}
+
+<h3>Resultat de la recherche</h3>
+<div>
+  {% if results %}
+    {% for result in results %}
+      <p ><a href="/article/{{result.identifiant}}">{{result.titre}}</a></p>
+    {% endfor %}
+  {% else %}
+     <div class="text-danger">
+        <h4> Aucun résultat correspondant à votre recherche </h4>
+     </div>
+  {% endif %}
+  <a href="/" class="btn btn-primary">Retour accueil</a>
+  </div>
+{% endblock %}

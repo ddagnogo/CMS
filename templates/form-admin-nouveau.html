@@ -1,0 +1,160 @@
+{% extends 'layout2.html' %}
+{% block content %}
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+                <form class="form-horizontal" action="/admin-nouveau/article" method="POST">
+                  <fieldset>
+                    <legend>References de l'article</legend>
+                    <div class="form-group">
+                      <label for="inputTitre" class="control-label">Titre</label>
+		      {% if article %}
+		      <input type="text" class="form-control" id="inputTitre" 
+		           value="{{article[0]}}" name="titre" onblur="suggerer();">
+		      <br>
+                       <label class="control-label" for="inputIdentifiant" >Identifiant</label>
+                        <br>
+                        <input type="text" class="form-control" value="{{ suggestion }}" 
+                        name="identifiant" id="inputIdentifiant" >
+
+		      {% else %}
+		      <input type="text" class="form-control" id="inputTitre" 
+			   name="titre" onblur="suggerer();"  >
+		      {% endif %}
+                      <br>
+		      {% if article and taille and taille[0] == 0 %}
+                        <div class="text-warning">Le champ titre est requis</div>
+		      {% else %}
+                        <div class="text-warning"></div>
+		      {% endif %}
+
+		        <div id="suggestion"> </div>
+
+
+                      <br>
+		      {% if article and taille and taille[1]==0 %}
+                        <div class="text-warning">Le champ identifiant est requis</div>
+		      {% elif non_char %}
+			<div class="text-warning">Le champ identifiant contient des caractères non 
+			    autorisés</div>
+		      {% elif existe_deja %}
+                        <div class="text-warning">Cet identifiant exite déjà pour un autre article</div>
+		      {% else %}
+			<div class="text-warning" id="errIdentifiant" ></div>
+		      {% endif %}
+                      <label class="control-label" for="inputAuteur">Auteur</label>
+		      {% if article %}
+		        <input type="text" class="form-control" value="{{article[2]}}" name="auteur">
+		      {% else %}
+                        <input type="text" class="form-control" name="auteur">
+                      {% endif %}
+
+                      <br>
+		      {% if article and taille and taille[2]==0 %}
+                        <div class="text-warning"s>Le Champ auteur est requis</div>
+		      {% else %}
+		        <div class="text-warning"></div>
+			{% endif %}
+		      <br>
+                      <div>
+                        <label for="jour">Date publication</label>
+                        <select name="jour">
+                          <option value="01">01</option>
+                          <option value="02">02</option>
+                          <option value="03">03</option>
+                          <option value="04">04</option>
+                          <option value="05">05</option>
+                          <option value="06">06</option>
+                          <option value="07">07</option>
+                          <option value="08">08</option>
+                          <option value="09">09</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                          <option value="21">21</option>
+                          <option value="22">22</option>
+                          <option value="23">23</option>
+                          <option value="24">24</option>
+                          <option value="25">25</option>
+                          <option value="26">26</option>
+                          <option value="27">27</option>
+                          <option value="28">28</option>
+                          <option value="29">29</option>
+                          <option value="30">30</option>
+                          <option value="31">31</option>
+                        </select>
+
+                        <select id="mois" name="mois">
+                          <option value="01">Janvier</option>
+                          <option value="02">Février</option>
+                          <option value="03">Mars</option>
+                          <option value="04">Avril</option>
+                          <option value="05">Mai</option>
+                          <option value="06">Juin</option>
+                          <option value="07">Juillet</option>
+                          <option value="08">Aout</option>
+                          <option value="09">Septembre</option>
+                          <option value="10">Octobre</option>
+                          <option value="11">Novembre</option>
+                          <option value="12">Décembre</option>
+                        </select>
+                        
+			{% if article %}
+			  <input type="text" value="{{article[3]}}" name="annee" size="10">
+			{% else %}
+			  <input type="text" name="annee" size="10">
+			{% endif %}
+                        <br>
+                      </div>
+		      {% if article and taille and taille[3]==0 %}
+		        <div class="text-warning">Le champ année est requis</div>
+		      {% elif date %}
+		      <div class="text-warning">La date entrée : {{date_e}} :n'est pas 
+			   valide</div>
+		     {% else %}  
+		        <div class="text-warning"></div>
+		      {% endif %}
+		      
+                      <br>
+                      <label class="col-lg-2 control-label" for="textParagraphe">Paragraphe</label>
+                      <div class="col-lg-10">
+		      {% if article %}
+		      <textarea class="form-control" rows="10" name="paragraphe">{{article[4]}}</textarea>
+		      {% else %}
+                        <textarea class="form-control" rows="10" name="paragraphe"></textarea>
+		      {% endif %}
+                        <br>
+                      </div>
+		      {% if article and taille and taille[4]==0 %}
+		         <div class="text-warning">Le champ paragraphe est requis</div>
+		       {% else %}
+		         <div class="text-warning"></div>
+                       {% endif %}
+
+                      <br>
+                      <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Annuler</button>
+                        <span></span>
+                        <button type="submit" class="btn btn-primary">Soumettre</button>
+                        <br>
+                      </div>
+                      <br>
+                    </div>
+                  </fieldset>
+                </form>
+
+          </div>
+        </div>
+      </div>
+</div>
+{% endblock %}

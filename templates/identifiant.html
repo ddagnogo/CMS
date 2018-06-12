@@ -1,0 +1,7 @@
+{% if suggestion  %}
+
+<label class="control-label" for="inputIdentifiant" >Identifiant</label>
+ <br>
+ <input type="text" class="form-control" value="{{ suggestion }}" 
+         name="identifiant" id="inputIdentifiant" onblur="verifierModification();" >
+{% endif %}

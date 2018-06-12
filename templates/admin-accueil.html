@@ -1,0 +1,26 @@
+{% extends 'layout2.html' %}
+{% block content %}
+
+  {% if articles %}
+    {% for article in articles %}
+
+      <div class="panel panel-default">
+        <h3>{{article.titre}}</h3>
+	
+          <p class="lead">{{article.paragraphe}} </p>
+          <p><a class="btn btn-success" href="/article/modification/{{article.identifiant}}">Modifier cet article</a></p>
+          <p class="text-info">  *---------*--------*  Identifiant : {{article.identifiant}} *-----*------*  Auteur : {{article.auteur}}*--------*-------* Publié le :{{article.date_publication}}
+          </p>           
+      </div>
+      {% endfor %}
+      <p><a class="btn btn-primary" href="/admin-nouveau">Ajouter un nouvel article</a></p>
+      
+  {% else %}  
+     
+    <div class="panel panel-default">
+	<div class="panel-footer"><h1>Aucun article trouvé</h1></div>
+    </div>
+
+  {% endif %}
+{% endblock %}
+
